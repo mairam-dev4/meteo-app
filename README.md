@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MeteoApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.11.
@@ -25,3 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+=======
+# meteo-app
+MeteoApp est une  application Angular, permettant d'afficher les prévisions météorologiques en temps réel pour une ville donnée au Sénégal.
+>>>>>>> 33e467d6540fbfdf591d37a9f91851c1c04b4b2c
