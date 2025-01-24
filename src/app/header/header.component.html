@@ -1,0 +1,92 @@
+ <section>
+    <nav class="nav navbar navbar-expand-lg navbar-light bg-white ">
+        <div class="container">
+          <a class="navbar-brand" href="#"><img src="/images/logo-sunumeteo.png" class="logo-meteo" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Previsions</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Maps</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Images</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+</section>
+<section class="acceuil">
+  <div class="container barre-search  ">
+    <div class="form-inline id=weatherForm">
+      <input  class="form-control py-3 mr-sm-2" [(ngModel)]="city" type="search" placeholder="Entrer une ville" aria-label="Search">
+      <button class="btn btn-outline-success p-3 my- my-sm-0" (click)="onClick()" type="submit">Search</button>
+    </div>
+  </div>
+  <h1 id="nomVille"> Dakar, Senegal</h1>
+  <p class="jourActuel">18 Janvier 2025</p>
+  <div class="icotemp">
+
+    <img  class="icone1" src="/images/thunder-icon.png" alt="">
+    <span id="temperature"  class="temperature">25<sup>°C</sup></span>
+  </div>
+  <p id="misAjour">Dernière mise à jour à 22h20.</p>
+  <p id="description"> brouillard de pente ascendante </p>
+  <div class="container block">
+    <div class="block-item">
+      <div class="icon-petit">
+        <img class="petit-icon" src="/images/temperature-icon.png" alt="">
+      </div>
+     
+      <div class="texte">
+        <p >Temperature</p>
+        <p id="tempInterval">High 12° / Low 04°</p>
+      </div>
+    </div>
+    <div class="block-item">
+      <div class="icon-petit">
+        <img class="petit-icon" src="/images/wind-icon.png" alt="">
+      </div>
+     
+      <div class="texte">
+        <p>Wind </p>
+        <p id="vent">10 km/h</p>
+      </div>
+    </div>
+    <div class="block-item">
+      <div class="icon-petit">
+        <img class="petit-icon" src="/images/rain-icon.png" alt="">
+      </div>
+      
+      <div class="texte">
+        <p>Humidity </p>
+        <p id="himidite">40%</p>
+      </div>
+    </div>
+    <div class="block-item">
+      <div class="icon-petit">
+        <img class="petit-icon" src="/images/eye-icon.png" alt="">
+      </div>
+   
+      <div class="texte">
+        <p>Visibility </p>
+        <p id="visibilite">10 km</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+<section>
+
+</section>
