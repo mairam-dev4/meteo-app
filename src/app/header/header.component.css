@@ -10,6 +10,7 @@
    color: white;
    text-align: center;
    font-weight: bold;
+   padding-bottom: 120px;
 }
 h1{
     padding-top: 20px;
@@ -18,9 +19,7 @@ h1{
 }
 .temperature{
     font-size:140px;
-    margin: 0px;
-    padding: 0px;
-  
+
 }
 .temperature sup{
     font-size: 80px;
@@ -83,6 +82,49 @@ display: block;
     padding-top: 40px;
     justify-content: center;
 }
+.prevision{
+    background-color: #fafbff;
+    text-align: center;
+    padding-top: 4px;
+    padding-bottom: 8px;
+    
+}
+.prevision-day{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 40px;
+    
+}
+.block-prevision{
+    border-radius: 20px;
+    background-color: #f0f5ff;
+    padding: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   
+}
+.block-prevision:hover {
+    background-color: #e6f7ff;
+    transform: scale(1.02);
+    transition: all 0.3s ease-in-out;
+  }
+  .fs-4 {
+    color: #ff4500;
+  }
+  
+  
+.ligne-vertical{
+    border-left: 1px solid black ;
+    height: 20px;
+    
+
+}
+.icon-meteo{
+    width: 40px;
+    height: 40px;
+}
 
 @media (max-width: 768px) {
     .block {
@@ -94,13 +136,13 @@ display: block;
         
     }
     .temperature{
-        font-size:100px;
+        font-size:80px;
         margin: 0px;
         padding: 0px;
       
     }
     .temperature sup{
-        font-size: 60px;
+        font-size: 40px;
         font-weight: 300px;
          
     }
@@ -108,4 +150,13 @@ display: block;
   .acceuil p{
     font-size: 20px;
   }
-
+ 
+.temperature sup{
+    font-size: 40px;
+    font-weight: 400px;
+     
+}
+.icone1{
+height: 100px;
+display: block;
+}

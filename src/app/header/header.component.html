@@ -34,15 +34,16 @@
       <button class="btn btn-outline-success p-3 my- my-sm-0" (click)="onClick()" type="submit">Search</button>
     </div>
   </div>
-  <h1 id="nomVille"> Dakar, Senegal</h1>
-  <p class="jourActuel">18 Janvier 2025</p>
+  
+  <h1 id="nomVille"> {{ dataWeather?.name}},{{dataWeather?.sys.country}}</h1>
+  <p class="jourActuel">{{ currentDate }}</p>
   <div class="icotemp">
 
     <img  class="icone1" src="/images/thunder-icon.png" alt="">
-    <span id="temperature"  class="temperature">25<sup>°C</sup></span>
+    <span id="temperature"  class="temperature"> {{dataWeather?.main.temp}}<sup>°C</sup></span>
   </div>
-  <p id="misAjour">Dernière mise à jour à 22h20.</p>
-  <p id="description"> brouillard de pente ascendante </p>
+  <p id="misAjour">Last updated at {{ dataWeather?.dt}} </p>
+  <p id="description"> {{ dataWeather?.weather[0].description }}</p>
   <div class="container block">
     <div class="block-item">
       <div class="icon-petit">
@@ -51,7 +52,7 @@
      
       <div class="texte">
         <p >Temperature</p>
-        <p id="tempInterval">High 12° / Low 04°</p>
+        <p id="tempInterval"> {{ dataWeather?.main.temp_max }}  / {{ dataWeather?.main.temp_min }} </p>
       </div>
     </div>
     <div class="block-item">
@@ -60,8 +61,8 @@
       </div>
      
       <div class="texte">
-        <p>Wind </p>
-        <p id="vent">10 km/h</p>
+        <p> wind </p>
+        <p id="vent">{{ dataWeather?.wind.speed }} km</p>
       </div>
     </div>
     <div class="block-item">
@@ -71,7 +72,7 @@
       
       <div class="texte">
         <p>Humidity </p>
-        <p id="himidite">40%</p>
+        <p id="himidite">{{dataWeather?.main.humidity}}%</p>
       </div>
     </div>
     <div class="block-item">
@@ -81,12 +82,114 @@
    
       <div class="texte">
         <p>Visibility </p>
-        <p id="visibilite">10 km</p>
+        <p id="visibilite">{{dataWeather?.visibility}}</p>
       </div>
     </div>
   </div>
+ 
 
 </section>
-<section>
 
-</section>
+<section class="  prevision" id="prevision">
+<h1>Prévisions Météo Hebdomadaires </h1>
+<p>The 'Recent Search Weather' section displays the latest weather information for the cities you have recently
+  searched. Stay up-to-date with the weather conditions of your preferred cities with this section.</p>
+<div class="container prevision-day ">
+  
+      <div class="block-prevision">
+         <i class="fa-solid fa-cloud-rain  fa-2x p-2"></i>
+         <p class="fs-4 fw-semibold"> 12°C</p>
+         <p class="fs-5 fw-semibold">Rain</p>
+         <hr>
+         <div class="d-flex gap-2">
+            <p> <i class="fa-solid fa-droplet"></i> 2 %</p>  
+            <div class="ligne-vertical"></div>
+            <p> <i class="fa-solid fa-wind"></i> 2 km/h</p>
+         </div>
+         <p class="fs-5 fw-semibold">Sunday</p>
+      </div>
+
+      <div class="block-prevision">
+        <i class="fa-solid fa-cloud-rain p-2 fa-2x"></i>
+        <p class="fs-4 fw-semibold"> 12°C</p>
+        <p class="fs-5 fw-semibold">Rain</p>
+        <hr>
+        <div class="d-flex gap-2">
+           <p><i class="fa-solid fa-droplet"></i> 2 % </p>  
+           <div class="ligne-vertical"></div>
+           <p><i class="fa-solid fa-wind"></i> 2 km/h</p>
+        </div>
+        <P class="fs-5 fw-semibold">Monday</P>
+      </div>
+
+      <div class="block-prevision">
+        <i class="fa-solid fa-cloud-rain p-2 fa-2x"></i>
+        <p class="fs-4 fw-semibold"> 12°C</p>
+        <p class="fs-5 fw-semibold">Rain</p>
+        <hr>
+        <div class="d-flex gap-2">
+           <p><i class="fa-solid fa-droplet"></i> 2 % </p>  
+           <div class="ligne-vertical"></div>
+           <p><i class="fa-solid fa-wind"></i> 2 km/h</p>
+        </div>
+        <P class="fs-5 fw-semibold">Tuesday</P>
+      </div>
+
+      <div class="block-prevision">
+        <i class="fa-solid fa-cloud-rain p-2 fa-2x"></i>
+        <p class="fs-4 fw-semibold"> 12°C</p>
+        <p class="fs-5 fw-semibold">Rain</p>
+        <hr>
+        <div class="d-flex gap-2 fs-6">
+           <p><i class="fa-solid fa-droplet"></i> 2 % </p> 
+           <div class="ligne-vertical"></div> 
+           <p><i class="fa-solid fa-wind"></i> 2 km/h</p>
+        </div>
+        <p class="fs-5 fw-semibold">Wednesday</p>
+     </div>
+
+     <div class="block-prevision">
+         <i class="fa-solid fa-cloud-rain p-2 fa-2x"></i>
+         <p class="fs-4 fw-semibold"> 12°C</p>
+         <p class="fs-5 fw-semibold">Rain</p>
+         <hr>
+         <div class="d-flex gap-2 fs-6">
+            <p><i class="fa-solid fa-droplet"></i> 2 % </p> 
+            <div class="vertical-line"></div> 
+            <p><i class="fa-solid fa-wind"></i> 2 km/h</p>
+         </div>
+         <P class="fs-5 fw-semibold">Thursday</P>
+      </div>
+
+      <div class="block-prevision fs-6">
+        <i class="fa-solid fa-cloud-rain p-2 fa-2x"></i>
+        <p class="fs-4 fw-semibold"> 12°C</p>
+        <p class="fs-5 fw-semibold">Rain</p>
+        <hr>
+        <div class="d-flex gap-2 fs-6">
+           <p><i class="fa-solid fa-droplet"></i> 2 % </p>  
+           <div class="ligne-vertical"></div>
+           <p><i class="fa-solid fa-wind"></i> 2 km/h</p>
+        </div>
+        <p class="fs-5 fw-semibold">Friday</p>
+     </div>
+
+     <div class="block-prevision">
+      <i class="fa-solid fa-cloud-rain p-2 fa-2x"></i>
+      <p class="fs-4 fw-semibold"> 12°C</p>
+      <p class="fs-5 fw-semibold">Rain</p>
+      <hr>
+      <div class="d-flex gap-2 fs-6">
+         <p><i class="fa-solid fa-droplet"></i> 2 % </p>  
+         <div class="ligne-vertical"></div>
+         <p><i class="fa-solid fa-wind"></i> 2 km/h</p>
+      </div>
+      <p class="fs-5 fw-semibold">Saturday</p>
+   </div>
+
+
+                    
+     
+
+</div>
+<section></section>
