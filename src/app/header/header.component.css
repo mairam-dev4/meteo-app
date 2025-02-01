@@ -94,7 +94,7 @@ display: block;
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
     padding-bottom: 40px;
     
 }
@@ -151,11 +151,7 @@ display: block;
     font-size: 20px;
   }
  
-.temperature sup{
-    font-size: 40px;
-    font-weight: 400px;
-     
-}
+
 .icone1{
 height: 100px;
 display: block;

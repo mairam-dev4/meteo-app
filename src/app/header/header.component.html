@@ -5,13 +5,13 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse " id="navbarNav">
+          <div class="collapse navbar-collapse ">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
+                <a class="nav-link active" aria-current="page" href="#acceuil">Acceuil</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Previsions</a>
+                <a class="nav-link" href="#prevision">Previsions</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Maps</a>
@@ -27,7 +27,7 @@
         </div>
       </nav>
 </section>
-<section class="acceuil">
+<section class="acceuil " id="acceuil" >
   <div class="container barre-search  ">
     <div class="form-inline id=weatherForm">
       <input  class="form-control py-3 mr-sm-2" [(ngModel)]="city" type="search" placeholder="Entrer une ville" aria-label="Search">
@@ -35,15 +35,15 @@
     </div>
   </div>
   
-  <h1 id="nomVille"> {{ dataWeather?.name}},{{dataWeather?.sys.country}}</h1>
+  <h1> {{ dataWeather?.name}},{{dataWeather?.sys.country}}</h1>
   <p class="jourActuel">{{ currentDate }}</p>
   <div class="icotemp">
 
     <img  class="icone1" src="/images/thunder-icon.png" alt="">
-    <span id="temperature"  class="temperature"> {{dataWeather?.main.temp}}<sup>°C</sup></span>
+    <span class="temperature"> {{dataWeather?.main.temp}}<sup>°C</sup></span>
   </div>
-  <p id="misAjour">Last updated at {{ dataWeather?.dt}} </p>
-  <p id="description"> {{ dataWeather?.weather[0].description }}</p>
+  <p>Last updated at {{ dataWeather?.dt}} </p>
+  <p > {{ dataWeather?.weather[0].description }}</p>
   <div class="container block">
     <div class="block-item">
       <div class="icon-petit">
@@ -52,7 +52,7 @@
      
       <div class="texte">
         <p >Temperature</p>
-        <p id="tempInterval"> {{ dataWeather?.main.temp_max }}  / {{ dataWeather?.main.temp_min }} </p>
+        <p > {{ dataWeather?.main.temp_max }}  / {{ dataWeather?.main.temp_min }} </p>
       </div>
     </div>
     <div class="block-item">
@@ -62,7 +62,7 @@
      
       <div class="texte">
         <p> wind </p>
-        <p id="vent">{{ dataWeather?.wind.speed }} km</p>
+        <p>{{ dataWeather?.wind.speed }} km</p>
       </div>
     </div>
     <div class="block-item">
@@ -72,7 +72,7 @@
       
       <div class="texte">
         <p>Humidity </p>
-        <p id="himidite">{{dataWeather?.main.humidity}}%</p>
+        <p>{{dataWeather?.main.humidity}}%</p>
       </div>
     </div>
     <div class="block-item">
@@ -82,7 +82,7 @@
    
       <div class="texte">
         <p>Visibility </p>
-        <p id="visibilite">{{dataWeather?.visibility}}</p>
+        <p>{{dataWeather?.visibility}}</p>
       </div>
     </div>
   </div>
@@ -90,106 +90,79 @@
 
 </section>
 
-<section class="  prevision" id="prevision">
+<section class="prevision" id="prevision">
 <h1>Prévisions Météo Hebdomadaires </h1>
 <p>The 'Recent Search Weather' section displays the latest weather information for the cities you have recently
   searched. Stay up-to-date with the weather conditions of your preferred cities with this section.</p>
 <div class="container prevision-day ">
   
       <div class="block-prevision">
-         <i class="fa-solid fa-cloud-rain  fa-2x p-2"></i>
-         <p class="fs-4 fw-semibold"> 12°C</p>
-         <p class="fs-5 fw-semibold">Rain</p>
+         <i class="fa-solid fa-cloud  fa-2x p-2"></i>
+         <p class="fs-4 fw-semibold"> {{ forecast[0]?.main.temp }} °C</p>
+         <p class="fs-5 fw-semibold">{{ forecast[0]?.weather[0].main }}</p>
          <hr>
          <div class="d-flex gap-2">
-            <p> <i class="fa-solid fa-droplet"></i> 2 %</p>  
+            <p> <i class="fa-solid fa-droplet"></i> {{ forecast[0]?.main.humidity }} %</p>  
             <div class="ligne-vertical"></div>
-            <p> <i class="fa-solid fa-wind"></i> 2 km/h</p>
+            <p> <i class="fa-solid fa-wind"></i> {{ forecast[0]?.wind.speed }} km/h</p>
          </div>
          <p class="fs-5 fw-semibold">Sunday</p>
       </div>
 
       <div class="block-prevision">
-        <i class="fa-solid fa-cloud-rain p-2 fa-2x"></i>
-        <p class="fs-4 fw-semibold"> 12°C</p>
-        <p class="fs-5 fw-semibold">Rain</p>
+        <i class="fa-solid fa-cloud p-2 fa-2x"></i>
+        <p class="fs-4 fw-semibold"> {{ forecast[1]?.main.temp }} °C</p>
+        <p class="fs-5 fw-semibold">{{ forecast[1]?.weather[0].main }}</p>
         <hr>
         <div class="d-flex gap-2">
-           <p><i class="fa-solid fa-droplet"></i> 2 % </p>  
+           <p><i class="fa-solid fa-droplet"></i> {{ forecast[1]?.main.humidity }} % </p>  
            <div class="ligne-vertical"></div>
-           <p><i class="fa-solid fa-wind"></i> 2 km/h</p>
+           <p><i class="fa-solid fa-wind"></i>  {{ forecast[1]?.wind.speed }} km/h</p>
         </div>
         <P class="fs-5 fw-semibold">Monday</P>
       </div>
 
       <div class="block-prevision">
-        <i class="fa-solid fa-cloud-rain p-2 fa-2x"></i>
-        <p class="fs-4 fw-semibold"> 12°C</p>
-        <p class="fs-5 fw-semibold">Rain</p>
+        <i class="fa-solid fa-sun p-2 fa-2x"></i>
+        <p class="fs-4 fw-semibold"> {{ forecast[2]?.main.temp }} °C</p>
+        <p class="fs-5 fw-semibold">{{ forecast[2]?.weather[0].main }}</p>
         <hr>
         <div class="d-flex gap-2">
-           <p><i class="fa-solid fa-droplet"></i> 2 % </p>  
+           <p><i class="fa-solid fa-droplet"></i> {{ forecast[2]?.main.humidity }} % </p>  
            <div class="ligne-vertical"></div>
-           <p><i class="fa-solid fa-wind"></i> 2 km/h</p>
+           <p><i class="fa-solid fa-wind"></i> {{ forecast[2]?.wind.speed }} km/h</p>
         </div>
         <P class="fs-5 fw-semibold">Tuesday</P>
       </div>
 
       <div class="block-prevision">
-        <i class="fa-solid fa-cloud-rain p-2 fa-2x"></i>
-        <p class="fs-4 fw-semibold"> 12°C</p>
-        <p class="fs-5 fw-semibold">Rain</p>
+        <i class="fa-solid fa-sun p-2 fa-2x"></i>
+        <p class="fs-4 fw-semibold"> {{ forecast[3]?.main.temp }} °C</p>
+        <p class="fs-5 fw-semibold">{{ forecast[3]?.weather[0].main }}</p>
         <hr>
         <div class="d-flex gap-2 fs-6">
-           <p><i class="fa-solid fa-droplet"></i> 2 % </p> 
+           <p><i class="fa-solid fa-droplet"></i> {{ forecast[3]?.main.humidity }} % </p> 
            <div class="ligne-vertical"></div> 
-           <p><i class="fa-solid fa-wind"></i> 2 km/h</p>
+           <p><i class="fa-solid fa-wind"></i> {{ forecast[3]?.wind.speed }} km/h</p>
         </div>
         <p class="fs-5 fw-semibold">Wednesday</p>
      </div>
 
      <div class="block-prevision">
-         <i class="fa-solid fa-cloud-rain p-2 fa-2x"></i>
-         <p class="fs-4 fw-semibold"> 12°C</p>
-         <p class="fs-5 fw-semibold">Rain</p>
+         <i class="fa-solid fa-cloud p-2 fa-2x"></i>
+         <p class="fs-4 fw-semibold"> {{ forecast[4]?.main.temp }} °C</p>
+         <p class="fs-5 fw-semibold">{{ forecast[4]?.weather[0].main }}</p>
          <hr>
          <div class="d-flex gap-2 fs-6">
-            <p><i class="fa-solid fa-droplet"></i> 2 % </p> 
+            <p><i class="fa-solid fa-droplet"></i> {{ forecast[4]?.main.humidity }} % </p> 
             <div class="vertical-line"></div> 
-            <p><i class="fa-solid fa-wind"></i> 2 km/h</p>
+            <p><i class="fa-solid fa-wind"></i> {{ forecast[4]?.wind.speed }} km/h</p>
          </div>
          <P class="fs-5 fw-semibold">Thursday</P>
       </div>
 
-      <div class="block-prevision fs-6">
-        <i class="fa-solid fa-cloud-rain p-2 fa-2x"></i>
-        <p class="fs-4 fw-semibold"> 12°C</p>
-        <p class="fs-5 fw-semibold">Rain</p>
-        <hr>
-        <div class="d-flex gap-2 fs-6">
-           <p><i class="fa-solid fa-droplet"></i> 2 % </p>  
-           <div class="ligne-vertical"></div>
-           <p><i class="fa-solid fa-wind"></i> 2 km/h</p>
-        </div>
-        <p class="fs-5 fw-semibold">Friday</p>
-     </div>
-
-     <div class="block-prevision">
-      <i class="fa-solid fa-cloud-rain p-2 fa-2x"></i>
-      <p class="fs-4 fw-semibold"> 12°C</p>
-      <p class="fs-5 fw-semibold">Rain</p>
-      <hr>
-      <div class="d-flex gap-2 fs-6">
-         <p><i class="fa-solid fa-droplet"></i> 2 % </p>  
-         <div class="ligne-vertical"></div>
-         <p><i class="fa-solid fa-wind"></i> 2 km/h</p>
-      </div>
-      <p class="fs-5 fw-semibold">Saturday</p>
-   </div>
-
-
-                    
-     
-
 </div>
-<section></section>
+</section>
+<section class="mes-images" id="mes-images">
+
+</section>

@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
 
   city = 'Dakar'
   dataWeather: any;
+  forecast: any[] = [];
  
   currentDate = new Date().toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
@@ -35,13 +36,19 @@ export class HeaderComponent implements OnInit {
 getCoordinate(){
   this.service.getCoordinate(this.city).subscribe({
     next: (response:any) => {
-      console.log(response);
-          this.getData(response[0]?.lat, response[0]?.lon);
-    },
-    error: (error: any) => {
-      console.log(error);
+     
+
+          if (response.length > 0) {
+            this.getData(response[0].lat, response[0].lon);
+            this.getForecast(response[0].lat, response[0].lon);
+          }
+        },
+
+       error: (error: any) => {
+        
+         console.log(error);
     }
-  })
+});
 }
 
   getData(latitude: number, longitude: number){
@@ -54,10 +61,23 @@ getCoordinate(){
         this.dataWeather = res;
       }, 
       error: (error) => {
+        alert('Erreur lors de la récupération des données météo actuelles.');
         console.log(error);
       }
     })
 
+  }
+
+  getForecast(latitude: number, longitude: number) {
+    this.service.getForecast(latitude, longitude).subscribe({
+      next: (res: any) => {
+        this.forecast = res.list.filter((item: any, index: number) => index % 8 === 0);
+      },
+      error: (error) => {
+        alert('Erreur lors de la récupération des prévisions météo.');
+         console.log(error)
+        }
+    });
   }
   
 }

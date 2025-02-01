@@ -20,5 +20,11 @@ export class HeaderService {
   
   }
 
+  getForecast(lat: number, lon: number) {
+    return this.http.get(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${this.API_KEY}`
+    );
+  }
+
 
 }
