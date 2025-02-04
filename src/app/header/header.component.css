@@ -125,6 +125,13 @@ display: block;
     width: 40px;
     height: 40px;
 }
+.bas-page{
+    background-color: black;
+    color: white;
+}
+.nav-footer{
+display: flex;
+}
 
 @media (max-width: 768px) {
     .block {
