@@ -1,59 +1,60 @@
 # MeteoApp
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.7.
+## Description
+Cette application Angular permet d'afficher les prévisions météorologiques en temps réel pour une ville donnée au Sénégal. L'application consomme une API météo publique (par exemple OpenWeatherMap) pour récupérer les données météorologiques et les afficher dans une interface utilisateur. 
 
-## Development server
+Les fonctionnalités incluent l'affichage de la température actuelle, les conditions météorologiques, les prévisions à court et long terme, ainsi que d'autres informations pertinentes.
 
-To start a local development server, run:
+## Objectifs
+- Consommer une API météo publique pour récupérer des données en temps réel.
+- Manipuler les données récupérées pour les afficher dans une interface utilisateur.
+- Gérer les erreurs éventuelles lors de la récupération des données depuis l'API.
+- Ajouter des fonctionnalités supplémentaires comme la possibilité de rechercher la météo pour différentes villes.
 
-```bash
+## Fonctionnalités
+- **Affichage de la température actuelle** : Affiche la température actuelle pour la ville sélectionnée.
+- **Conditions météorologiques** : Affiche les conditions (ensoleillé, nuageux, pluvieux, etc.) pour la ville sélectionnée.
+- **Prévisions météorologiques** : Affiche les prévisions météorologiques à court et long terme.
+- **Gestion des erreurs** : Affiche des messages d'erreur en cas de problème lors de la récupération des données depuis l'API.
+- **Recherche de villes** : Permet à l'utilisateur de rechercher la météo pour différentes villes.
+- **Affichage des icônes météorologiques** : Affiche des icônes correspondant aux conditions météorologiques.
+
+## Technologies utilisées
+- **Angular** (dernière version)
+- **OpenWeatherMap API** (ou toute autre API météo publique)
+- **CSS** pour le style
+
+## Installation
+### Prérequis
+- Node.js (version 12 ou supérieure)
+- npm (gestionnaire de paquets Node)
+- Angular CLI
+
+### Étapes d'installation
+1. Clonez ce repository :
+   ```bash
+   git clone https://github.com/username/projet-meteo.git
+
+2. Allez dans le dossier du projet :
+
+cd projet-meteo
+
+3. Installez les dépendances du projet :
+
+npm install
+
+4. Configurez l'API clé d'OpenWeatherMap (ou autre) dans le fichier src/environments/environment.ts :
+
+typescript
+
+export const environment = {
+  production: false,
+  apiKey: 'VOTRE_API_KEY',
+  apiUrl: 'https://api.openweathermap.org/data/2.5/'
+};
+
+5. Lancez le serveur de développement :
+
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+6. Ouvrez votre navigateur et accédez à http://localhost:4200 pour voir l'application en action.
