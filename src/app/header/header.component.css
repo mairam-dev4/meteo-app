@@ -2,6 +2,11 @@
     width: 160px;
   
 }
+.btn-search {
+    background-color: #FFA034 !important; 
+    color: white !important; 
+    border-color: #FFA034 !important; 
+}
 .acceuil{
     background-image:  url(/images/bg-1.png);
     background-position: center ;

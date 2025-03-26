@@ -1,13 +1,15 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, NgModule, OnInit } from '@angular/core';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderService } from '../header.service';
 import { FormsModule } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 
 
 
 @Component({
   selector: 'app-header',
-  imports: [NgbNavModule,FormsModule],
+  imports: [NgbNavModule,FormsModule,CommonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
@@ -40,6 +42,7 @@ getCoordinate(){
 
           if (response.length > 0) {
             this.getData(response[0].lat, response[0].lon);
+            this.city =response[0].name;
             this.getForecast(response[0].lat, response[0].lon);
           }
         },
@@ -79,5 +82,47 @@ getCoordinate(){
         }
     });
   }
+
+  
+daysOfWeek: string[] = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+
+getDayName(index: number): string {
+  const today = new Date().getDay(); 
+  return this.daysOfWeek[(today + index+1) % 7];
+}
+
+getWeatherIcon(weather: string): string {
+  switch (weather.toLowerCase()) {
+    case 'clear':
+    case 'sunny':
+      return 'fa-solid fa-sun';
+    case 'clouds':
+      return 'fa-solid fa-cloud';
+    case 'rain':
+      return 'fa-solid fa-cloud-showers-heavy';
+    case 'snow':
+      return 'fa-solid fa-snowflake';
+    default:
+      return 'fa-solid fa-cloud-sun';
+  }
+}
+
+ traduireMeteo(condition: string): string {
+  switch (condition.toLowerCase()) {
+    case 'clear':
+    case 'sunny':
+      return 'Ensoleillé';
+    case 'clouds':
+      return 'Nuageux';
+    case 'rain':
+      return 'Pluvieux';
+    case 'snow':
+      return 'Neigeux';
+    default:
+      return 'Partiellement nuageux';
+  }
+}
+
+
   
 }

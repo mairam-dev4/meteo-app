@@ -13,12 +13,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="#prevision">Previsions</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Maps</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Images</a>
-              </li>
+              
               <li class="nav-item">
                 <a class="nav-link " href="#">Contact</a>
               </li>
@@ -31,18 +26,18 @@
   <div class="container barre-search  ">
     <div class="form-inline id=weatherForm">
       <input  class="form-control py-3 mr-sm-2" [(ngModel)]="city" type="search" placeholder="Entrer une ville" aria-label="Search">
-      <button class="btn btn-outline-success p-3 my- my-sm-0" (click)="onClick()" type="submit">Search</button>
+      <button class="btn btn-search p-3 my- my-sm-0" (click)="onClick()" type="submit">Recherche</button>
     </div>
   </div>
   
-  <h1> {{ dataWeather?.name}},{{dataWeather?.sys.country}}</h1>
+  <h1> {{city}},{{dataWeather?.sys.country}}</h1>
   <p class="jourActuel">{{ currentDate }}</p>
   <div class="icotemp">
 
     <img  class="icone1" src="/images/thunder-icon.png" alt="">
     <span class="temperature"> {{dataWeather?.main.temp}}<sup>°C</sup></span>
   </div>
-  <p>Last updated at {{ dataWeather?.dt}} </p>
+  <p>Dernière mise à jour : {{ dataWeather?.dt * 1000 | date:'dd/MM/yyyy HH:mm:ss':'fr' }}</p>
   <p > {{ dataWeather?.weather[0].description }}</p>
   <div class="container block">
     <div class="block-item">
@@ -61,7 +56,7 @@
       </div>
      
       <div class="texte">
-        <p> wind </p>
+        <p>vend </p>
         <p>{{ dataWeather?.wind.speed }} km</p>
       </div>
     </div>
@@ -71,7 +66,7 @@
       </div>
       
       <div class="texte">
-        <p>Humidity </p>
+        <p>Humidité </p>
         <p>{{dataWeather?.main.humidity}}%</p>
       </div>
     </div>
@@ -81,7 +76,7 @@
       </div>
    
       <div class="texte">
-        <p>Visibility </p>
+        <p>Visibilité </p>
         <p>{{dataWeather?.visibility}}</p>
       </div>
     </div>
@@ -92,9 +87,10 @@
 
 <section class="prevision" id="prevision">
 <h1>Prévisions Météo Hebdomadaires </h1>
-<p>The 'Recent Search Weather' section displays the latest weather information for the cities you have recently
-  searched. Stay up-to-date with the weather conditions of your preferred cities with this section.</p>
-<div class="container prevision-day ">
+<p class="container">Restez informé des conditions météorologiques de la semaine ! 🌍☁️ Que ce soit soleil, pluie ou vent, consultez nos prévisions détaillées pour anticiper vos activités et mieux planifier vos journées. 📅🌦️
+  Ne laissez pas la météo vous surprendre, préparez-vous avec nos prévisions actualisées ! 😊🌞
+</p>
+<!-- <div class="container prevision-day ">
   
       <div class="block-prevision">
          <i class="fa-solid fa-cloud  fa-2x p-2"></i>
@@ -106,7 +102,7 @@
             <div class="ligne-vertical"></div>
             <p> <i class="fa-solid fa-wind"></i> {{ forecast[0]?.wind.speed }} km/h</p>
          </div>
-         <p class="fs-5 fw-semibold">Sunday</p>
+         <p class="fs-5 fw-semibold">dimanche</p>
       </div>
 
       <div class="block-prevision">
@@ -119,7 +115,7 @@
            <div class="ligne-vertical"></div>
            <p><i class="fa-solid fa-wind"></i>  {{ forecast[1]?.wind.speed }} km/h</p>
         </div>
-        <P class="fs-5 fw-semibold">Monday</P>
+        <P class="fs-5 fw-semibold">  Lundi</P>
       </div>
 
       <div class="block-prevision">
@@ -132,7 +128,7 @@
            <div class="ligne-vertical"></div>
            <p><i class="fa-solid fa-wind"></i> {{ forecast[2]?.wind.speed }} km/h</p>
         </div>
-        <P class="fs-5 fw-semibold">Tuesday</P>
+        <P class="fs-5 fw-semibold">Mardi</P>
       </div>
 
       <div class="block-prevision">
@@ -145,7 +141,7 @@
            <div class="ligne-vertical"></div> 
            <p><i class="fa-solid fa-wind"></i> {{ forecast[3]?.wind.speed }} km/h</p>
         </div>
-        <p class="fs-5 fw-semibold">Wednesday</p>
+        <p class="fs-5 fw-semibold">Mercredi</p>
      </div>
 
      <div class="block-prevision">
@@ -158,15 +154,33 @@
             <div class="vertical-line"></div> 
             <p><i class="fa-solid fa-wind"></i> {{ forecast[4]?.wind.speed }} km/h</p>
          </div>
-         <P class="fs-5 fw-semibold">Thursday</P>
+         <P class="fs-5 fw-semibold">Jeudi</P>
       </div>
 
+</div> -->
+
+
+<div class="container prevision-day">
+  <div *ngFor="let day of forecast; let i = index" class="block-prevision">
+    <i class="{{ getWeatherIcon(day.weather[0].main) }} p-2 fa-2x"></i>
+    <p class="fs-4 fw-semibold">{{ day.main.temp }} °C</p>
+    <p class="fs-5 fw-semibold">{{ traduireMeteo(day.weather[0].main) }}</p>
+    <hr>
+    <div class="d-flex gap-2">
+      <p><i class="fa-solid fa-droplet"></i> {{ day.main.humidity }} % </p>
+      <div class="ligne-vertical"></div>
+      <p><i class="fa-solid fa-wind"></i> {{ day.wind.speed }} km/h</p>
+    </div>
+    <p class="fs-5 fw-semibold">{{ getDayName(i) }}</p>
+  </div>
 </div>
+
+
 </section>
 <footer class=" d-flex  bas-page pt-5 pb-3">
   <div class="container d-flex flex-column justify-content-center align-items-center">
 
-    <a  href="#acceuil"><img src="/images/logo-sunumeteo.png" class="logo-meteo" alt=""></a>
+    <a  href="#acceuil"><img src="/images/logo-sunumeteo.png" class="logo-meteo" alt="logo"></a>
     <p class="text-center">Une application météo qui fournit des informations précises et à jour sur la météo pour les utilisateurs.</p>
   <div class="d-flex gap-4">
     <a href=""><i class="fa-brands fa-whatsapp fa-3x text-white"></i></a>
@@ -176,7 +190,6 @@
   <div class="d-flex gap-4 pt-4 fw-bold fs-5  flex-wrap ">
     <a class="nav-link active" aria-current="page" href="#acceuil">Acceuil</a>
     <a class="nav-link" href="#prevision">Previsions</a>
-    <a class="nav-link" href="#">Maps</a>
     <a class="nav-link " href="#">Contact</a>
   </div>
   <p class="pt-5">©2025 SunuMeteo, tous droits réservés.</p>
